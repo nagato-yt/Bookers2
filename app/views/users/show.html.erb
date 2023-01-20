@@ -51,7 +51,7 @@
                        
                 </div>
                 <div class="col-md-8 offset-md-1">
-                    <h2>Book detail</h2>
+                    <h2>Books</h2>
                     <table class="table">
                         <thead>
                             <tr>
@@ -66,7 +66,7 @@
                         <tbody>
                        <% @books.each do |book| %>
                         <tr>
-                           <td><%= link_to user_path(book.id) do %>
+                           <td><%= link_to user_path(book.user) do %>
                            <%= image_tag @user.get_profile_image(80,80) %>
                            <%end%></td>
                             <td><%=link_to  book_path(book) do %>

@@ -33,7 +33,9 @@
               <%end%>
             </li>
             <li>
-              <a class="nav-link text-light" href="/users"><i class="fa-solid fa-users"></i> Users</a>
+              <%=link_to users_path, class:"nav-link text-light" do %>
+               <i class="fa-solid fa-users"></i> Users
+               <%end%>
             </li>
             <li>
               <%= link_to books_path, class:"nav-link text-light" do %>

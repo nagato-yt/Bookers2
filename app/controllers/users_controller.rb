@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    is_matching_login_user
+    
     @user= User.find(params[:id])
     @books= @user.books
   end
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   
   def index
     @users=User.all
-   
+    
   end 
   
   
