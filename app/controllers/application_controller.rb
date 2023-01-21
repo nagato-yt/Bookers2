@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+     before_action :auheniticate_user, {only:[:edit,:show,:index]}
      before_action :configure_permitted_parameters, if: :devise_controller?
      
      def after_sign_up_path_for(resourse)
@@ -23,6 +24,12 @@ class ApplicationController < ActionController::Base
         devise_parameter_sanitizer.permit(:sign_up, keys:[:name,:email])
          
     end 
+    
+    def auheniticate_user
+        if current_user==nil
+            redirect_to user_session_path
+        end
+    end
     
     
 end

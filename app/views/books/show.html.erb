@@ -4,14 +4,14 @@
         <p><%= flash[:notice] %></p>
         <div class="container px-5 px-sm-0">
             <div class="row">
-                
-                <%= render 'list', book:@book %>
+            
+                <%= render 'list', book:@book, user:@book_user %>
                 <div class="col-md-8 offset-md-1">
                     <h2>Book detail</h2>
                     <table class="table">
                         
                         <tbody>
-                            <% if current_user.id == @bookuser.id %>
+                            <% if @bookuser.user_id==current_user.id %>
                         <tr>
                             
                            <% if @bookuser.user.profile_image.attached? %>
