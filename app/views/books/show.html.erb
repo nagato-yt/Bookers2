@@ -11,7 +11,9 @@
                     <table class="table">
                         
                         <tbody>
+                            <% if current_user.id == @bookuser.id %>
                         <tr>
+                            
                            <% if @bookuser.user.profile_image.attached? %>
                            <td><%= link_to user_path(@bookuser.user.id) do %>
                             <%= image_tag @bookuser.user.get_profile_image(100,100) %><br/><%= @bookuser.user.name %>
@@ -24,6 +26,21 @@
                             <td><%=link_to "Edit", edit_book_path(@bookuser), class:"btn btn-sm btn-success"%></td>
                             <td><%= link_to"Destroy",book_path(@bookuser), method: :delete, "data-confirm" =>"本当に削除しますか？", class:"btn btn-sm btn-danger"%></td>
                         </tr>
+                            <%else%>
+                        <tr>
+                           <% if @bookuser.user.profile_image.attached? %>
+                           <td><%= link_to user_path(@bookuser.user.id) do %>
+                            <%= image_tag @bookuser.user.get_profile_image(100,100) %><br/><%= @bookuser.user.name %>
+                           <%end%></td>
+                            <td><%=link_to  book_path(@bookuser) do %>
+                            <%= @bookuser.title %>
+                            <%end%></td>
+                            <%end%>
+                            <td><%= @bookuser.body %></td> 
+                        </tr>
+                            <%end%>
+                        
+                        
                         </tbody>
                    
                      </table>
