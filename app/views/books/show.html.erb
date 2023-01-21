@@ -1,23 +1,16 @@
 <!DOCTYPE html>
 <html>
     <body>
-        <p>books/show</p>
+        <p><%= flash[:notice] %></p>
         <div class="container px-5 px-sm-0">
             <div class="row">
-                <%= render 'list', books:@books, book:@book %>
+                
+                <%= render 'list', book:@book %>
                 <div class="col-md-8 offset-md-1">
                     <h2>Book detail</h2>
                     <table class="table">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Title</th>
-                                <th>Opinion</th>
-                                <th colspan="3"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
                         
+                        <tbody>
                         <tr>
                            <% if @bookuser.user.profile_image.attached? %>
                            <td><%= link_to user_path(@bookuser.user.id) do %>
@@ -25,13 +18,11 @@
                            <%end%></td>
                             <td><%=link_to  book_path(@bookuser) do %>
                             <%= @bookuser.title %>
+                            <%end%></td>
                             <%end%>
-                            <%end%>
-                            </td>
-                            <td><%= @book.body %></td>
+                            <td><%= @bookuser.body %></td>
                             <td><%=link_to "Edit", edit_book_path(@bookuser), class:"btn btn-sm btn-success"%></td>
                             <td><%= link_to"Destroy",book_path(@bookuser), method: :delete, "data-confirm" =>"本当に削除しますか？", class:"btn btn-sm btn-danger"%></td>
-                             
                         </tr>
                         </tbody>
                    

@@ -1,9 +1,22 @@
 <!DOCTYPE html>
 <html>
     <body>
-        <p></p>
+        <p><%= flash[:notice] %></p>
         <div class="container px-5 px-sm-0">
+            <div class="error_explanation">
+              <% if @book.errors.any? %>
+                <h3>You got <%= @book.errors.count %> error</h3> 
+               <ul>
+                <% @book.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+                <%end%>
+               </ul>
+              <%end%>
+            </div>
+            
             <div class="row">
+
+                
                 <%= render 'list', books:@books, book:@book %>
                 <div class="col-md-8 offset-md-1">
                     <h2>Books</h2>
