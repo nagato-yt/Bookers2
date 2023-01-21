@@ -4,7 +4,7 @@
         <p>books/show</p>
         <div class="container px-5 px-sm-0">
             <div class="row">
-                <%= render 'list', books:@books %>
+                <%= render 'list', books:@books, book:@book %>
                 <div class="col-md-8 offset-md-1">
                     <h2>Book detail</h2>
                     <table class="table">
@@ -19,18 +19,18 @@
                         <tbody>
                         
                         <tr>
-                           <% if @book.user.profile_image.attached? %>
-                           <td><%= link_to user_path(@book.user.id) do %>
-                            <%= image_tag @book.user.get_profile_image(100,100) %><br/><%= @book.user.name %>
+                           <% if @bookuser.user.profile_image.attached? %>
+                           <td><%= link_to user_path(@bookuser.user.id) do %>
+                            <%= image_tag @bookuser.user.get_profile_image(100,100) %><br/><%= @bookuser.user.name %>
                            <%end%></td>
-                            <td><%=link_to  book_path(@book) do %>
-                            <%= @book.title %>
+                            <td><%=link_to  book_path(@bookuser) do %>
+                            <%= @bookuser.title %>
                             <%end%>
                             <%end%>
                             </td>
                             <td><%= @book.body %></td>
-                            <td><%=link_to "Edit", edit_book_path(@book), class:"btn btn-sm btn-success"%></td>
-                            <td><%= link_to"Destroy",book_path(@book), method: :delete, "data-confirm" =>"本当に削除しますか？", class:"btn btn-sm btn-danger"%></td>
+                            <td><%=link_to "Edit", edit_book_path(@bookuser), class:"btn btn-sm btn-success"%></td>
+                            <td><%= link_to"Destroy",book_path(@bookuser), method: :delete, "data-confirm" =>"本当に削除しますか？", class:"btn btn-sm btn-danger"%></td>
                              
                         </tr>
                         </tbody>
