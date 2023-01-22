@@ -1,11 +1,12 @@
 class BooksController < ApplicationController
-  # before_action :is_matching_login_user, only: [:edit, :update]
+
   def new
     @book=Book.new
   end
 
   def create
-    # @books=Book.all
+    @books=Book.all
+    @book_user=current_user
     @book=Book.new(book_params)
     @book.user_id=current_user.id
      if @book.save
@@ -33,6 +34,12 @@ class BooksController < ApplicationController
 
   def edit
    @book = Book.find(params[:id])
+   if @book.user == current_user
+     render :edit
+   else
+     redirect_to books_path
+   end 
+   
   end
 
   def destroy
@@ -59,11 +66,8 @@ private
   end 
   
   
-  def is_matching_login_user
-  user_id= @book
-  unless user_id ==current_user.id
-    redirect_to books_path
-  end 
-  end
+ 
+  
+  
   
 end
